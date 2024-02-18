@@ -13,8 +13,21 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+ 
+    position: sticky;
+    top: 0; /* or any other threshold value */
+    
   }
+
+
 }
+
+
+
+
+
+
+
 
 .App-header {
   background-color: #282c34;
