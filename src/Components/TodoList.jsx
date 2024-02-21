@@ -11,7 +11,27 @@ const TodoList = () => {
 
     }
     const addList =()=>{
-    setTodoList([...todoList,newTask])
+        const task = {
+            id:todoList.length === 0 ? 1 : todoList[todoList.length -1].id+1,
+            taskName: newTask,
+            completed: false,
+        }
+    setTodoList([...todoList, task])
+    }
+    const removeTask = (id) =>{
+        setTodoList(todoList.filter((task)=> task.id !== id))
+    }
+    const completeTask = (id) => {
+        setTodoList(
+            todoList.map((task)=>{
+                if(task.id === id){
+                    return 
+                    { ...task, completed: true } ;
+                }else{
+                        return task
+                    }
+            })
+        )
     }
 
   return (
@@ -24,7 +44,10 @@ const TodoList = () => {
     {
        todoList.map((task)=>{
             return (            <div>
-            <h3>{task}</h3>
+            <h3>{task.taskName}</h3>
+
+             <button onClick={completeTask}>Complete</button>
+            <button onClick={ () => removeTask(task.id)}>X</button>
             </div>
             )
         })
